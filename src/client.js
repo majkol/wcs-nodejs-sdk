@@ -36,6 +36,13 @@ class WcsClient {
         uploader.file(uploadToken, filePath, extraParams, callback)
     }
 
+    uploadByStream(fileStream, putPolicy, extraParams, callback) {
+        let uploadToken = this.uploadToken(putPolicy);
+
+        let uploader = new normalUploader(this.config);
+        uploader.stream(uploadToken, fileStream, extraParams, callback)
+    }
+
     /**
      * 按文件路径上传-分片上传
      * @param {*} filePath      文件绝对路径
@@ -54,6 +61,13 @@ class WcsClient {
 
         let uploader = new resumeUploader(this.config);
         uploader.file(uploadToken, filePath, extraParams, callback)
+    }
+
+    resumeUploadByStream(fileStream, fileSize, putPolicy, extraParams, callback) {
+        let uploadToken = this.uploadToken(putPolicy);
+
+        let uploader = new resumeUploader(this.config);
+        uploader.stream(uploadToken, fileStream, files, extraParams, callback)
     }
 
     /**
