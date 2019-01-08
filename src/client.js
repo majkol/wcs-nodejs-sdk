@@ -67,7 +67,7 @@ class WcsClient {
         let uploadToken = this.uploadToken(putPolicy);
 
         let uploader = new resumeUploader(this.config);
-        uploader.stream(uploadToken, fileStream, files, extraParams, callback)
+        uploader.stream(uploadToken, fileStream, extraParams, callback)
     }
 
     /**
